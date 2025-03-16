@@ -1,0 +1,21 @@
+npm init -y -> to initialise the package.json
+
+dependencies : npm i express mongoose dotenv jsonwebtoken bcryptjs cookie-parser cloudinary socket.io
+npm i nodemon -D
+
+dotenv is used to access environment variables from .env file
+why to use express.Router() ??
+
+const router = express.Router() -> used to create an instance of Router() from express. why do we use it?
+sare routes app.js me banaane ki jagah ham different different files me routes banaate hain -> for instance, user profile k sare routes ek hi file me and so on.. router helps us in this -> to keep our code organised and clean
+
+Validation of tokens -> jab bhi ham login krte hain -> hame ek token generate krke user ko diya jata hai aur use kahin store krwayenge -> ek fixed time interval (for example, 24 hours k baad) vo token expire ho jayega -> yani jaha store krwaya hai -> vo token change ho jayega -> to ab user ka token store krwaye hue token se match nahi hoga -> user logout ho jayega
+
+socket.io : socket has 2 parts -> socket.io (server) and socket.io-client (client side)
+
+react application (frontend) se event send krne k liye we use socket.io-client aur server side se event send krne k liye we use the package socket.io
+
+
+
+
+

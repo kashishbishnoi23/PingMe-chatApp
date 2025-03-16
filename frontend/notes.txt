@@ -1,0 +1,8 @@
+dependencies -> npm i react-router-dom react-hot-toast
+npm i -D daisyui@latest
+npm i axios zustand 
+
+zustand -> global state management library -> yani ek hi jagah pe ek function bana liya -> usme kuch states hain -> now we want to use those states in random components -> then I can directly use them because of this global state management library
+
+
+
