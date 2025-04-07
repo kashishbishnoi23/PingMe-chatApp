@@ -2,24 +2,18 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {useAuthStore} from "../store/useAuthStore.js"
 import Loader from "../components/Loader"
-import {Toaster, toast} from "react-hot-toast"
+import {Toaster} from "react-hot-toast"
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [formData, setFormData] = useState({});
   const {isLoggingIn, login} = useAuthStore();
   
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
-    setFormData({
-      email,
-      password
-    })
-    login(formData);
-    console.log('Login credentials:', { email, password });
+    const credentials = { email, password };
+    login(credentials);
+    console.log('Login credentials:', credentials);
   };
 
   return (

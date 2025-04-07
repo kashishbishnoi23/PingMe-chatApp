@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 // whenever we login/signup or the user is authenticated, we want the user to get connected to the socket sever and when the user logs out , we want the user to get disconnected from the server (user closes the tab or logs out)
 
-const BASE_URL = "http://localhost:5001";
+const BASE_URL = import.meta.env.MODE === "development" ?  "http://localhost:5001" : "/";
 
 export const useAuthStore = create((set, get) => ({
   //   define the states that you want to use globally in different-different components:
@@ -65,6 +65,7 @@ export const useAuthStore = create((set, get) => ({
   login: async (data) => {
     set({ isLoggingIn: true });
     try {
+      console.log(data);
       const res = await axiosInstance.post("/auth/login", data);
       set({ authUser: res.data });
       toast.success("Logged in successfully");

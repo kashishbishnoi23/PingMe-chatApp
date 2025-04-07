@@ -16,9 +16,6 @@ const Navbar = () => {
             <FaUser className="mr-1" /> Profile
           </Link> : "" }
          
-          <Link to="/settings" className="text-white flex items-center hover:underline">
-            <FaCog className="mr-1" /> Settings
-          </Link>
           {authUser ?  <button onClick={logout}className="text-white flex items-center hover:underline">
             <FaSignOutAlt className="mr-1" /> Logout
           </button> : ""}

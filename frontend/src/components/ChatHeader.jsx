@@ -4,7 +4,7 @@ import { useAuthStore } from '../store/useAuthStore';
 
 const ChatHeader = () => {
   const { selectedUser } = useChatStore();
-  const { authUser } = useAuthStore();
+  const {onlineUsers} = useAuthStore();
 
   return (
     <div className="flex items-center p-4 bg-white shadow-md border-b">
@@ -15,7 +15,7 @@ const ChatHeader = () => {
       />
       <div>
         <h2 className="text-xl font-bold text-[#009dd3]">{selectedUser.fullName}</h2>
-        <p className="text-sm text-gray-500">{authUser.onlineUsers.includes(selectedUser._id) ? 'Online' : 'Offline'}</p>
+        <p className="text-sm text-gray-500">{onlineUsers.includes(selectedUser._id) ? 'Online' : 'Offline'}</p>
       </div>
     </div>
   );

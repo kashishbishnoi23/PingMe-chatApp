@@ -11,12 +11,15 @@ const Users = () => {
   const handleCheckboxChange = (e) => {
     setShowOnlineUsers(e.target.checked);
   };
-// get all the users:
 
-// get all the users:
   useEffect(() => {
     getUsers();
   }, [getUsers]);
+
+  // Filter users based on checkbox state
+  const filteredUsers = showOnlineUsers 
+    ? users.filter(user => onlineUsers.includes(user._id))
+    : users;
 
   return (
     <>
@@ -28,13 +31,14 @@ const Users = () => {
               <input
                 type="checkbox"
                 className="form-checkbox"
+                checked={showOnlineUsers}
                 onChange={handleCheckboxChange}
               />
               <span className="ml-2 text-gray-700">Show online only</span>
             </label>
           </div>
           <div className="space-y-4">
-            {users.map((user) => (
+            {filteredUsers.map((user) => (
               <button
                 onClick={() => setSelectedUser(user)}
                 key={user._id}

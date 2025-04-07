@@ -1,5 +1,5 @@
-import { generateToken } from "../../lib/utils.js";
-import User from "../../models/user.model.js";
+import { generateToken } from "../lib/utils.js";
+import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import cloudinary from "cloudinary";
 import dotenv from "dotenv";
@@ -98,11 +98,13 @@ const newUser = new User({
 export const login = async(req, res)=>{
   //  access the email and password from the body
   const {email, password} = req.body;
+  console.log(email, password);
  try{
   // check if the email exists or not:
   const user = await User.findOne({email});
 
   if (!user) {
+    console.log("not found!!!!");
     return res.status(400).json({message : "Invalid credentials"})
   }
 
