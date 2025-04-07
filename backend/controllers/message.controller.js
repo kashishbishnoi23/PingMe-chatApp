@@ -1,8 +1,9 @@
 import User from "../models/user.model.js"
 import Message from "../models/message.model.js"
-import cloudinary from "cloudinary";
+// import cloudinary from "cloudinary";
+import {v2 as cloudinary} from "cloudinary";
 import { getReceiverSocketId, io } from "../lib/socket.js";
-
+import { config } from "dotenv";
 
 export const getUsersForSideBar = async (req, res)=>{
 // fetch all the users from database except the current user:
@@ -48,6 +49,13 @@ export const getMessages = async (req, res)=>{
 export const sendMessage = async (req, res) =>{
     try{
         // access the id of the receiver:
+        config();
+        cloudinary.config({
+            cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
+            api_key:process.env.CLOUDINARY_API_KEY,
+            api_secret:process.env.CLOUDINARY_API_SECRET
+        })
+        
         const {id: receiverId} = req.params;
         // access the id of the sender:
         const senderId = req.user._id; // fron the authenticated user set by the middleware

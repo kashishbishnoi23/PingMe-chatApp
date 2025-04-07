@@ -3,6 +3,7 @@ import { axiosInstance } from "../lib/axios.js";
 import toast from "react-hot-toast";
 import { useAuthStore } from "./useAuthStore.js";
 
+
 export const useChatStore = create((set, get) => ({
   messages: [],
   users: [],
@@ -44,6 +45,7 @@ export const useChatStore = create((set, get) => ({
   sendMessage: async (message) => {
     const { selectedUser, messages } = get();
     console.log("Selected User : ", selectedUser);
+
 
     try {
       const response = await axiosInstance.post(`/messages/send/${selectedUser._id}`, message);
