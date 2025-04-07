@@ -17,9 +17,9 @@ const SignUpPage = () => {
     console.log('Signup data:', { fullName, email, password });
     const success = validateForm();
     console.log("success = ", success);
-
+    const credentials = { email,fullName, password };
     if (success) {
-      signUp(formData);
+      signUp(credentials);
     }
   };
 
@@ -47,11 +47,13 @@ const SignUpPage = () => {
       return false;
     }
 
+    /*
     setFormData({
       fullName,
       email,
       password
     });
+    */
 
     return true;
   };
