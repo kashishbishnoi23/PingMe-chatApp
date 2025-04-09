@@ -45,8 +45,9 @@ const Messages = () => {
             ref={messageEndRef}
           >
             <div className=" chat-image avatar">
-              <div className="size-10 rounded-full border">
+              <div className="size-10 rounded-full">
                 <img
+                className="object-cover h-full w-full rounded-full"
                   src={
                     message.senderId === authUser._id
                       ? authUser.profilePic || "/defaultUser2.png"

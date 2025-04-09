@@ -15,6 +15,10 @@ const ChatBox = () => {
     setSelectedUser(null);
   };
 
+  useEffect(()=>{
+    getMessages(selectedUser._id);
+  }, [selectedUser]);
+
   return (
     <div className={`flex flex-col w-full ${selectedUser ? 'fixed inset-0 z-50 bg-white md:relative md:h-[90vh]' : 'h-[90vh]'}`}>
       <Toaster />

@@ -42,7 +42,7 @@ const ProfilePage = () => {
             <img
               src={authUser?.profilePic || '/defaultUser2.png'}
               alt="Profile"
-              className="w-full h-full rounded-full object-cover"
+              className="w-full h-full rounded-full object-contain"
             />
             <label htmlFor="profilePic" className="absolute bottom-0 right-0 bg-[#009dd3] p-2 rounded-full cursor-pointer">
               <FaCamera className="text-white" />
