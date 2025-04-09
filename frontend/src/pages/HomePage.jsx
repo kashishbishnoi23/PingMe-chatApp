@@ -10,7 +10,7 @@ const HomePage = () => {
   const { selectedUser, getUsers, users } = useChatStore();
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
+    <div className="flex flex-col md:flex-row bg-gray-50">
       <Users />
       <div className="flex-grow flex justify-center">
         {selectedUser ? <ChatBox /> : <NoChatSelected />}

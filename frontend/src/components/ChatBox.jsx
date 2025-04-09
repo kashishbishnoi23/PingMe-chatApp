@@ -6,7 +6,7 @@ import Loader from './Loader';
 import Messages from './Messages';
 import MessageInput from './MessageInput';
 import { Toaster } from "react-hot-toast";
-import { IoArrowBack } from "react-icons/io5"; // Import back arrow icon
+import { IoArrowBack } from "react-icons/io5";
 
 const ChatBox = () => {
   const { getMessages, selectedUser, isMessagesLoading, messages, setSelectedUser } = useChatStore();
@@ -20,11 +20,11 @@ const ChatBox = () => {
   }, [selectedUser]);
 
   return (
-    <div className={`flex flex-col w-full ${selectedUser ? 'fixed inset-0 z-50 bg-white md:relative md:h-[90vh]' : 'h-[90vh]'}`}>
+    <div className={`flex flex-col w-full ${selectedUser ? 'fixed inset-0 z-50 bg-white md:relative md:h-[89vh]' : 'h-[89vh]'}`}>
       <Toaster />
       {selectedUser && (
         <button 
-        onClick={handleBack}
+          onClick={handleBack}
         className="p-2 m-2 flex items-center gap-2 text-[#009dd3] hover:text-[#009ed3] transition-colors duration-200 bg-blue-50 hover:bg-blue-100 rounded-lg md:hidden"
       >
         <IoArrowBack size={20} />

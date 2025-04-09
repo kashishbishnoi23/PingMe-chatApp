@@ -78,23 +78,24 @@ const MessageInput = () => {
         )}
       </div>
 
-      <form onSubmit={handleSendMessage} className="flex items-center p-4 bg-white shadow-md border-t">
-        <input
-          type="text"
-          className="flex-grow p-3 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-[#009dd3] placeholder-gray-500"
-          placeholder="Type a message..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <label className="cursor-pointer p-3 bg-gray-200 rounded-r-lg hover:bg-gray-300 transition duration-300">
-          <FaImage className="text-gray-600" />
-          <input type="file" accept="image/*" className="hidden" onClick={() => fileInputRef.current?.click()} ref={fileInputRef} onChange={handleImageChange} />
-        </label>
+      <form onSubmit={handleSendMessage} className="flex items-center p-4 bg-white shadow-lg border-t border-gray-200 gap-2">
+  <input
+    type="text"
+    className="flex-grow p-3 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#009dd3] focus:border-[#009dd3] placeholder-gray-400 transition-all duration-300 hover:bg-white"
+    placeholder="Type a message..."
+    value={text}
+    onChange={(e) => setText(e.target.value)}
+  />
+  <label className="cursor-pointer p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-300">
+    <FaImage className="text-gray-600 hover:text-[#009dd3]" />
+    <input type="file" accept="image/*" className="hidden" onClick={() => fileInputRef.current?.click()} ref={fileInputRef} onChange={handleImageChange} />
+  </label>
 
-        <button type="submit" className="p-3 bg-[#009dd3] text-white rounded-r-lg hover:bg-[#007ba1] transition duration-300">
-          <FaPaperPlane />
-        </button>
-      </form>
+  <button type="submit" className="p-3 bg-[#009dd3] text-white rounded-lg hover:bg-[#007ba1] transition duration-300 hover:shadow-md">
+    <FaPaperPlane />
+  </button>
+</form>
+
     </>
   );
 };

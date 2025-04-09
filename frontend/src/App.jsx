@@ -30,7 +30,7 @@ function App() {
 
   return (
     <>
-    <div>
+    <div className="max-h-screen">
       <Navbar/>
       <Routes>
         {/* if the user is authenticated -> navigate to the following components else don't */}

@@ -7,6 +7,16 @@ const Users = () => {
   const { users, isUsersLoading, getUsers, selectedUser, setSelectedUser } = useChatStore();
   const [showOnlineUsers, setShowOnlineUsers] = useState(false);
   const { onlineUsers } = useAuthStore();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleCheckboxChange = (e) => {
     setShowOnlineUsers(e.target.checked);
@@ -16,7 +26,6 @@ const Users = () => {
     getUsers();
   }, [getUsers]);
 
-  // Filter users based on checkbox state
   const filteredUsers = showOnlineUsers 
     ? users.filter(user => onlineUsers.includes(user._id))
     : users;
@@ -24,7 +33,7 @@ const Users = () => {
   return (
     <>
       {isUsersLoading ? <Loader /> :
-        <div className="w-full md:w-1/3 bg-white p-4 border-r shadow-lg overflow-y-auto h-screen">
+        <div className={`w-full md:w-1/3 bg-white p-4 border-r border-gray-200 shadow-lg overflow-y-auto ${isMobile ? 'h-screen' : 'h-[89vh]'}`}>
           <h2 className="text-3xl font-bold mb-6 text-[#009dd3]">Users</h2>
           <div className="mb-4">
             <label className="inline-flex items-center">
