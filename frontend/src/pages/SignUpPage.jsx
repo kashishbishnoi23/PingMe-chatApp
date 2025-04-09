@@ -10,7 +10,16 @@ const SignUpPage = () => {
   const [password, setPassword] = useState('');
   const { signUp, isSigningUp } = useAuthStore();
   const [formData, setFormData] = useState({});
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const credentials = { fullName, email, password };
+    const success = validateForm();
+    if (success) {
+      signUp(credentials);
+    }
+    console.log('Signup credentials:', credentials);
+  };
+  /*
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle signup logic here
@@ -22,6 +31,7 @@ const SignUpPage = () => {
       signUp(credentials);
     }
   };
+  */
 
   const validateForm = () => {
     console.log("validate Form");
@@ -59,15 +69,16 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <Toaster /> {/* Add Toaster component */}
-      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+      <Toaster />
+      <div className="max-w-sm w-full backdrop-blur-sm bg-white/90 p-8 rounded-xl shadow-lg">
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-[#009dd3]">Sign Up</h2>
+          <h2 className="text-3xl font-bold text-[#009dd3] tracking-tight">Create an Account</h2>
+          <p className="text-gray-500 text-sm mt-2">Please fill in the details below</p>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fullName">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-1.5">
+            <label className="block text-gray-700 text-xs font-semibold" htmlFor="fullName">
               Full Name
             </label>
             <input
@@ -75,27 +86,27 @@ const SignUpPage = () => {
               id="fullName"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              placeholder="eg : John Doe"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#009dd3]"
+              placeholder="John Doe"
+              className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#009dd3] focus:border-transparent transition-all duration-200"
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-              Email
+          <div className="space-y-1.5">
+            <label className="block text-gray-700 text-xs font-semibold" htmlFor="email">
+              Email Address
             </label>
             <input
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="eg: johdoe23@gmail.com"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#009dd3]"
+              placeholder="john.doe@example.com"
+              className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#009dd3] focus:border-transparent transition-all duration-200"
               required
             />
           </div>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <div className="space-y-1.5">
+            <label className="block text-gray-700 text-xs font-semibold" htmlFor="password">
               Password
             </label>
             <input
@@ -103,26 +114,35 @@ const SignUpPage = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="eg: 67er23@"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#009dd3]"
+              placeholder="Enter your password"
+              className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#009dd3] focus:border-transparent transition-all duration-200"
               required
             />
           </div>
-
           {isSigningUp ? (
-            <Loader />
-          ) : 
+            <div className="flex justify-center">
+              <Loader />
+            </div>
+          ) : (
             <button
-              type="submit"
-              className="w-full bg-[#009dd3] text-white py-2 px-4 rounded-lg hover:bg-[#007ba1] transition duration-300"
               disabled={isSigningUp}
+              type="submit"
+              className="w-full bg-[#009dd3] text-white text-sm py-2 px-4 rounded-lg hover:bg-[#007ba1] transform hover:scale-[0.99] transition-all duration-200 font-semibold shadow-md hover:shadow-lg"
             >
               Sign Up
             </button>
-          }
+          )}
         </form>
-        <div className="text-center mt-4">
-          <p className="text-gray-700">Already have an account? <Link to="/login" className="text-[#009dd3] hover:underline">Login</Link></p>
+        <div className="text-center mt-6">
+          <p className="text-gray-600 text-sm">
+            Already have an account?{' '}
+            <Link 
+              to="/login" 
+              className="text-[#009dd3] hover:text-[#007ba1] font-semibold transition-colors duration-200"
+            >
+              Login
+            </Link>
+          </p>
         </div>
       </div>
     </div>
